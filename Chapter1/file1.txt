@@ -1,2 +1,3 @@
-abc	def
-ghijkl	bbn
+int main() {
+	int a,b; 	
+}
