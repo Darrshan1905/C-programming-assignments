@@ -19,7 +19,6 @@ void push(double);
 double pop(void);
 int getch(void);
 void ungetch(int);
-void mathfunc(char s[]);
 
 int main() {
 	int type;
@@ -127,14 +126,6 @@ int getop(char s[]) {
 
 	i = 0;
 
-	if (islower(c)) {
-        	while (islower(s[++i] = c = getch()));
-        	s[i] = '\0';
-        	if (c != EOF)
-            		ungetch(c);
-        	return NAME;
-    	}
-
 	if(!isdigit(c) && c != '.' && c != '-')
 		return c;
 
@@ -171,21 +162,4 @@ void ungetch(int c) {
 		printf("ungetch: too many characters\n");
 	else
 		buf[bufp++] = c;
-}
-
-void mathfunc(char s[]) {
-	double d;
-	
-	if(strcmp(s, "sin") == 0)
-		push(sin(pop()));
-	else if(strcmp(s, "cos") == 0)
-		push(cos(pop()));
-	else if(strcmp(s, "exp") == 0)
-		push(exp(pop()));
-	else if(strcmp(s, "pow") == 0)
-		d = pop();
-		push(pow(pop(), d));
-	else
-		printf("\n %s not supported");
-
 }
