@@ -6,8 +6,6 @@ int sp = 0;
 double stack[MAXVAL];
 
 void push(double f) {
-	if(sp == -1)
-		sp = 0;
 	if(sp <  MAXVAL)
 		stack[sp++] = f;
         else
@@ -45,8 +43,14 @@ void swapTopTwo() {
 	}
 }
 
+void duplicate() {
+	if(sp < MAXVAL) {
+		stack[sp++] = stack[sp - 1];
+	}
+}
+
 void clearStack() {
-	sp = -1;
+	sp = 0;
 	printf("\nStack cleared\n");
 }
 
@@ -63,6 +67,12 @@ int main() {
 
 	printf("Swapping the top 2 elements of the stack:");
 	swapTopTwo();
+
+	printf("Duplicating the top elements of the stack: ");
+	duplicate();
+
+	printf("Printing the top element of the stack:");
+        printf("%lf\n", printTop());
 
 	printf("Clearing the stack:");
 	clearStack();

@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 #include<ctype.h>
 #include<math.h>
 
@@ -33,6 +34,9 @@ int main() {
 				push(atof(s));
 				printf("Pushed %lf\n", atof(s));
 				break;
+			case NAME:
+				mathfunc(s);
+                		break;
 			case '+':
 				c = pop();
 			       	d = pop();
@@ -182,10 +186,11 @@ void mathfunc(char s[]) {
 		push(cos(pop()));
 	else if(strcmp(s, "exp") == 0)
 		push(exp(pop()));
-	else if(strcmp(s, "pow") == 0)
+	else if(strcmp(s, "pow") == 0) {
 		d = pop();
 		push(pow(pop(), d));
+	}
 	else
-		printf("\n %s not supported");
+		printf("\n %s not supported", s);
 
 }
