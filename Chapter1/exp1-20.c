@@ -18,7 +18,7 @@ int main() {
 		else {
 			putchar(c);
 			currLen++;
-			if(currLen > 8)
+			if(currLen >= 8)
 				currLen = currLen % 8;
 		}
 	}

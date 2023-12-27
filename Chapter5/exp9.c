@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-static int daytab[2][13] = {
+static char daytab[2][13] = {
         {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
         {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
 };
@@ -10,11 +10,11 @@ int day_of_year(int year, int month, int day) {
 
 	leap = year % 4 == 0 && year % 100 != 100 || year % 400 == 0;
 
-	if (year < 1 || month < 1 || month > 12 || day < 1 || day > *(*(daytab + leap) + month))
+	if (year < 1 || month < 1 || month > 12 || day < 1 || day > daytab[leap][month])
         	return -1;
 
     	for (i = 1; i < month; i++)
-        	day += *(*(daytab + leap) + i);
+        	day += daytab[leap][i];
 
     	return day;
 }
@@ -30,8 +30,8 @@ void month_day(int year, int yearday, int *month, int *day) {
         return;
     }
 
-    for (i = 1; yearday > *(*(daytab + leap) + i); i++)
-        yearday -= *(*(daytab + leap) + i);
+    for (i = 1; yearday > daytab[leap][i]; i++)
+        yearday -= daytab[leap][i];
 
     *month = i;
     *day = yearday;
