@@ -110,7 +110,7 @@ FILE _iob[OPEN_MAX] = {
 int main() {
 	FILE *fp = fopen("file1.txt", "r");
 	 int c;
-    	while ((c = getchar(fp)) != EOF) {
+    	while ((c = getc(fp)) != EOF) {
 		printf("%c", c);
     	}
 
